@@ -4,10 +4,11 @@ Name:		ezmlm-web
 Version:	1.0
 Release:	2
 Group:		Networking/Daemons
+Group(pl):	Sieciowe/Serwery
 Source0:	ftp://rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
 Source1:	ezmlm-web-setup
-Patch:		ezmlm-web.patch
-Copyright:	GPL
+Patch0:		ezmlm-web.patch
+License:	GPL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Requires:	apache
 Requires:	ezmlm-idx
@@ -15,9 +16,9 @@ Requires:	perl
 Requires:	qmail
 
 %description
-EZMLM-WEB is a CGI script that allows users on the web server to easily
-create, edit (maintain), and delete mailing lists without having to
-"bother" the system administrator.
+EZMLM-WEB is a CGI script that allows users on the web server to
+easily create, edit (maintain), and delete mailing lists without
+having to "bother" the system administrator.
 
 %description -l pl
 EZMLM-WEB to skrypt CGI pozwalaj±cy u¿ytkownikom na ³atwe tworzenie,
@@ -33,15 +34,13 @@ cc -s $RPM_OPT_FLAGS index.c -o index
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/httpd/ezmlm,%{_bindir}} \
+	$RPM_BUILD_ROOT/var/lib/list
 
-install -d $RPM_BUILD_ROOT/etc/httpd/ezmlm
-install -d $RPM_BUILD_ROOT/var/lib/list
-install -d $RPM_BUILD_ROOT%{_bindir}
-
-install	ezmlm-web.cgi	$RPM_BUILD_ROOT/etc/httpd/ezmlm/
-install	.htaccess	$RPM_BUILD_ROOT/etc/httpd/ezmlm/ezmlm-web-htaccess
-install	index		$RPM_BUILD_ROOT/etc/httpd/ezmlm/ezmlm-web-index.cgi
-install %{SOURCE1}	$RPM_BUILD_ROOT%{_bindir}/setup-ezmlm-web
+install ezmlm-web.cgi $RPM_BUILD_ROOT%{_sysconfdir}/httpd/ezmlm/
+install .htaccess $RPM_BUILD_ROOT%{_sysconfdir}/httpd/ezmlm/ezmlm-web-htaccess
+install index $RPM_BUILD_ROOT%{_sysconfdir}/httpd/ezmlm/ezmlm-web-index.cgi
+install %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/setup-ezmlm-web
 
 gzip -9nf CHANGES README TODO
 
@@ -49,8 +48,8 @@ gzip -9nf CHANGES README TODO
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(755,root,root)
+%defattr(644,root,root,755)
 %attr(644,root,root)  %doc {CHANGES,README,TODO}.gz
-%attr(755,root,root)  %dir /etc/httpd/ezmlm
-%attr(755,root,root)  /etc/httpd/ezmlm/ezmlm*
-%{_bindir}/*
+%attr(755,root,root) %dir %{_sysconfdir}/httpd/ezmlm
+%attr(755,root,root) %{_sysconfdir}/httpd/ezmlm/ezmlm*
+%attr(755,root,root) %{_bindir}/*
