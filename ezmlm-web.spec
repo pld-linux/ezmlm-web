@@ -4,8 +4,6 @@ Name:		ezmlm-web
 Version:	1.0
 Release:	2
 Group:		Networking/Daemons
-Group(de):	Netzwerkwesen/Server
-Group(pl):	Sieciowe/Serwery
 Source0:	ftp://rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
 Patch0:		%{name}.patch
 License:	GPL
