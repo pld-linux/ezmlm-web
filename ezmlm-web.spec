@@ -1,5 +1,5 @@
-Summary:	EZLM World Wide Web Interface
-Summary(pl):	Interfejs WWW do menad¿era list dyskusyjnych EZMLM
+Summary:	EZLM World Wide Web interface
+Summary(pl):	Interfejs WWW do zarz±dcy list dyskusyjnych EZMLM
 Name:		ezmlm-web
 Version:	1.0
 Release:	2
@@ -37,14 +37,12 @@ install ezmlm-web.cgi	$RPM_BUILD_ROOT/home/httpd/html/ezmlm/
 install .htaccess	$RPM_BUILD_ROOT/home/httpd/html/ezmlm/.htaccess
 install index		$RPM_BUILD_ROOT/home/httpd/html/ezmml/ezmlm-web-index.cgi
 
-gzip -9nf CHANGES README TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {CHANGES,README,TODO}.gz
+%doc CHANGES README TODO
 %attr(755,root,root) %dir /home/httpd/html/ezmlm
 %attr(644,root,root) /home/httpd/html/ezmlm/.htaccess
 %attr(755,root,root) /home/httpd/html/ezmlm/*.cgi
