@@ -31,11 +31,11 @@ administratorowi systemu.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/home/httpd/html/ezmlm}
+install -d $RPM_BUILD_ROOT{/home/services/httpd/html/ezmlm}
 
-install ezmlm-web.cgi	$RPM_BUILD_ROOT/home/httpd/html/ezmlm/
-install .htaccess	$RPM_BUILD_ROOT/home/httpd/html/ezmlm/.htaccess
-install index		$RPM_BUILD_ROOT/home/httpd/html/ezmml/ezmlm-web-index.cgi
+install ezmlm-web.cgi	$RPM_BUILD_ROOT/home/services/httpd/html/ezmlm/
+install .htaccess	$RPM_BUILD_ROOT/home/services/httpd/html/ezmlm/.htaccess
+install index		$RPM_BUILD_ROOT/home/services/httpd/html/ezmml/ezmlm-web-index.cgi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -43,6 +43,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES README TODO
-%attr(755,root,root) %dir /home/httpd/html/ezmlm
-%attr(644,root,root) /home/httpd/html/ezmlm/.htaccess
-%attr(755,root,root) /home/httpd/html/ezmlm/*.cgi
+%attr(755,root,root) %dir /home/services/httpd/html/ezmlm
+%attr(644,root,root) /home/services/httpd/html/ezmlm/.htaccess
+%attr(755,root,root) /home/services/httpd/html/ezmlm/*.cgi
