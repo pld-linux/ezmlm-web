@@ -2,7 +2,7 @@ Summary:	EZLM World Wide Web interface
 Summary(pl):	Interfejs WWW do zarz±dcy list dyskusyjnych EZMLM
 Name:		ezmlm-web
 Version:	2.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://ftp.rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
@@ -33,11 +33,11 @@ administratorowi systemu.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/home/services/httpd/html/ezmlm}
+install -d $RPM_BUILD_ROOT{/srv/httpd/html/ezmlm}
 
-install ezmlm-web.cgi	$RPM_BUILD_ROOT/home/services/httpd/html/ezmlm
-install .htaccess	$RPM_BUILD_ROOT/home/services/httpd/html/ezmlm/.htaccess
-install index		$RPM_BUILD_ROOT/home/services/httpd/html/ezmml/ezmlm-web-index.cgi
+install ezmlm-web.cgi	$RPM_BUILD_ROOT/srv/httpd/html/ezmlm
+install .htaccess	$RPM_BUILD_ROOT/srv/httpd/html/ezmlm/.htaccess
+install index		$RPM_BUILD_ROOT/srv/httpd/html/ezmml/ezmlm-web-index.cgi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -45,6 +45,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES README TODO
-%dir /home/services/httpd/html/ezmlm
-/home/services/httpd/html/ezmlm/.htaccess
-%attr(755,root,root) /home/services/httpd/html/ezmlm/*.cgi
+%dir /srv/httpd/html/ezmlm
+/srv/httpd/html/ezmlm/.htaccess
+%attr(755,root,root) /srv/httpd/html/ezmlm/*.cgi
