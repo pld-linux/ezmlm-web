@@ -1,11 +1,11 @@
 Summary:	EZLM World Wide Web interface
 Summary(pl):	Interfejs WWW do zarz±dcy list dyskusyjnych EZMLM
 Name:		ezmlm-web
-Version:	1.0
-Release:	2
+Version:	2.1
+Release:	1
 Group:		Networking/Daemons
-Source0:	ftp://rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
-# Source0-md5:	e536451984757fda89109044b0fffac9
+Source0:	http://ftp.rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
+# Source0-md5:	41d701bc509c1a7fbec42f954e3e4171
 Patch0:		%{name}.patch
 License:	GPL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
