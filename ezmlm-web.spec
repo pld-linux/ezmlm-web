@@ -54,12 +54,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root)  %dir /etc/httpd/ezmlm
 %attr(755,root,root)  /etc/httpd/ezmlm/ezmlm*
 %{_bindir}/*
-
-%changelog
-* Mon Jun 07 1999 Arkadiusz Mi¶kiewicz <misiek@pld.org.pl>
-- PLDized
-
-* Sun Aug 09 1998 David Summers <david@summersoft.fay.ar.us>
-Release 1:
-- Modified ezmlm-web.cgi to grab name from /var/qmail/control/me.
-- Added setup-ezmlm-web script for users to set up list access.
