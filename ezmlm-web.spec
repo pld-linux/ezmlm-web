@@ -5,6 +5,7 @@ Version:	1.0
 Release:	2
 Group:		Networking/Daemons
 Source0:	ftp://rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
+# Source0-md5:	e536451984757fda89109044b0fffac9
 Patch0:		%{name}.patch
 License:	GPL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
