@@ -1,0 +1,79 @@
+diff -urN ezmlm-web-1.0.orig/.htaccess ezmlm-web-1.0/.htaccess
+--- ezmlm-web-1.0.orig/.htaccess	Tue Jun  8 23:00:39 1999
++++ ezmlm-web-1.0/.htaccess	Tue Jun  8 23:00:56 1999
+@@ -1,4 +1,4 @@
+-AuthName EZ Mailing List Manager
++AuthName 'EZ Mailing List Manager'
+ AuthType Basic
+-AuthUserFile /etc/ezmlm-users
++AuthUserFile AUTHFILE
+ require valid-user
+diff -urN ezmlm-web-1.0.orig/ezmlm-web.cgi ezmlm-web-1.0/ezmlm-web.cgi
+--- ezmlm-web-1.0.orig/ezmlm-web.cgi	Tue Jun  8 23:00:39 1999
++++ ezmlm-web-1.0/ezmlm-web.cgi	Tue Jun  8 23:00:47 1999
+@@ -32,10 +32,14 @@
+ # Default domain name to use if one isn't supplied. This is mainly used to 
+ # determine if we are using a virtual host, and to allow the user to enter
+ # "user@" instead of the full email address to add a local subscriber.
+-$DEFAULT_HOST = 'rucus.ru.ac.za';
++open( DEFAULT_HOST_FILE, "</etc/qmail/control/me" ) || die "Can't open /etc/qmail/control/me: $!\n";
++@DEFAULT_HOST_TABLE = <DEFAULT_HOST_FILE>;
++close( DEFAULT_HOST_FILE );
++$DEFAULT_HOST = $DEFAULT_HOST_TABLE[0];
++$DEFAULT_HOST =~ s/(\n|\r)//;
+ 
+ # Where is the qmail virtual domains file kept on this system?
+-$VIRTUAL_DOMAINS = '/var/qmail/control/virtualdomains';
++$VIRTUAL_DOMAINS = '/etc/qmail/control/virtualdomains';
+ 
+ # Safe list deletion? 
+ # 0 = move list to .list and the .qmails to deleted.qmail/. Recoverable :)
+@@ -528,11 +532,14 @@
+    
+    # Set owner if required ...
+    if (defined($q->param('5'))) {
+-      $options .= "5 \'$USER\@$DEFAULT_HOST\'";
++      $options .= "5$USER\@$DEFAULT_HOST";
+    }
+    
+    # Actually make the list ...
+-   system "ezmlm-make -x$options $LIST_DIR/$list $HOME_DIR/.qmail-$qmail " . $q->param('inlocal') . ' ' . $q->param('inhost') ||
++   $inlocal_pld = $q->param('inlocal');
++   $inhost_pld  = $q->param('inhost');
++
++   system "ezmlm-make", "-x$options", "$LIST_DIR/$list", "$HOME_DIR/.qmail-$qmail", "$inlocal_pld", "$inhost_pld" ||
+       die "List creation failed";
+    
+    # Handle the change to inlocal for virtual hosts ...
+@@ -653,7 +660,7 @@
+    }
+    
+    # Actually update the list ...
+-   system "ezmlm-make -ex$options $list" || die "List update failed";
++   system "ezmlm-make",  "-ex$options", "$list" || die "List update failed";
+ 
+    # Update headeradd, headerremove, mimeremove and prefix ...
+    open(ADD, ">$list/headeradd") || die "Unable to write DIR/headeradd: $!";
+diff -urN ezmlm-web-1.0.orig/index.c ezmlm-web-1.0/index.c
+--- ezmlm-web-1.0.orig/index.c	Tue Jun  8 23:00:39 1999
++++ ezmlm-web-1.0/index.c	Tue Jun  8 23:00:47 1999
+@@ -4,14 +4,9 @@
+ /* Copyright (C) 1998, Guy Antony Halse, All Rights Reserved */
+ /* See the README file in this distribution for copyright information */
+ 
+-void main(void) {
+-   /* Change this path to wherever you decided to put ezmlm-web.cgi */
+-   system("/usr/local/bin/ezmlm-web.cgi");
+-
+-   /* Note that you could also use the following to allow a specific user
+-      to store their mailing lists in a different directory defined by
+-      /home/user/mailinglists ... This over-rides the default */
+-   /*
+-   system("/usr/local/bin/ezmlm-web.cgi -d /var/mail/user/mailinglists");
+-   */
++int main(void)
++{
++/* Change this path to wherever you decided to put ezmlm-web.cgi */
++system("/etc/httpd/ezmlm/ezmlm-web.cgi");
++return -1; /* Shouldn't ever happen */
+ }
