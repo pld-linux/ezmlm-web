@@ -4,9 +4,10 @@ Name:		ezmlm-web
 Version:	1.0
 Release:	2
 Group:		Networking/Daemons
+Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
 Source0:	ftp://rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
-Patch0:		ezmlm-web.patch
+Patch0:		%{name}.patch
 License:	GPL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Requires:	apache
@@ -28,7 +29,7 @@ administratorowi systemu.
 %setup -q
 %patch -p1
 %build
-cc -s $RPM_OPT_FLAGS index.c -o index
+%{__cc} %{rpmldflags} %{rpmcflags} index.c -o index
 
 %install
 rm -rf $RPM_BUILD_ROOT
