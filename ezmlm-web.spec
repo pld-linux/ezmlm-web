@@ -2,7 +2,7 @@ Summary:	EZLM World Wide Web Interface
 Summary(pl):	Interfejs WWW do menad¿era list dyskusyjnych EZMLM
 Name:		ezmlm-web
 Version:	1.0
-Release:	1
+Release:	2
 Group:		Networking/Daemons
 Source0:	ftp://rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
 Source1:	ezmlm-web-setup
@@ -35,7 +35,7 @@ cc -s $RPM_OPT_FLAGS index.c -o index
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/etc/httpd/ezmlm
-install -d $RPM_BUILD_ROOT/var/state/list
+install -d $RPM_BUILD_ROOT/var/lib/list
 install -d $RPM_BUILD_ROOT%{_bindir}
 
 install	ezmlm-web.cgi	$RPM_BUILD_ROOT/etc/httpd/ezmlm/
