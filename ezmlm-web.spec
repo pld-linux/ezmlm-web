@@ -8,7 +8,7 @@ Source0:	ftp://rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
 Source1:	ezmlm-web-setup
 Patch:		ezmlm-web.patch
 Copyright:	GPL
-BuildRoot:	/tmp/%{name}-%{version}-buildroot
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Requires:	apache
 Requires:	ezmlm-idx
 Requires:	perl
