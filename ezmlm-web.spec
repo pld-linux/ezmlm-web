@@ -9,7 +9,7 @@ Source0:	http://ftp.rucus.ru.ac.za/pub/mail/ezmlm/%{name}-%{version}.tar.gz
 # Source0-md5:	41d701bc509c1a7fbec42f954e3e4171
 Patch0:		%{name}.patch
 BuildRequires:	fhs-compliance
-Requires:	apache
+Requires:	webserver = apache
 Requires:	ezmlm-idx
 Requires:	perl
 Requires:	qmail
