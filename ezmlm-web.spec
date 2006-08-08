@@ -27,7 +27,7 @@ administratorowi systemu.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 %{__cc} %{rpmldflags} %{rpmcflags} index.c -o index
