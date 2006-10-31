@@ -1,3 +1,4 @@
+# TODO: webapps or so
 Summary:	EZLM World Wide Web interface
 Summary(pl):	Interfejs WWW do zarz±dcy list dyskusyjnych EZMLM
 Name:		ezmlm-web
