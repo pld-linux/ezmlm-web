@@ -1,6 +1,6 @@
 # TODO: webapps or so
 Summary:	EZLM World Wide Web interface
-Summary(pl.UTF-8):   Interfejs WWW do zarządcy list dyskusyjnych EZMLM
+Summary(pl.UTF-8):	Interfejs WWW do zarządcy list dyskusyjnych EZMLM
 Name:		ezmlm-web
 Version:	2.1
 Release:	2
