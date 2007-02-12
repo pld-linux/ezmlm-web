@@ -1,6 +1,6 @@
 # TODO: webapps or so
 Summary:	EZLM World Wide Web interface
-Summary(pl):	Interfejs WWW do zarz±dcy list dyskusyjnych EZMLM
+Summary(pl.UTF-8):   Interfejs WWW do zarzÄ…dcy list dyskusyjnych EZMLM
 Name:		ezmlm-web
 Version:	2.1
 Release:	2
@@ -21,9 +21,9 @@ EZMLM-WEB is a CGI script that allows users on the web server to
 easily create, edit (maintain), and delete mailing lists without
 having to "bother" the system administrator.
 
-%description -l pl
-EZMLM-WEB to skrypt CGI pozwalaj±cy u¿ytkownikom na ³atwe tworzenie,
-zarz±dzanie oraz kasowanie list dyskusyjnych bez zawracania g³owy
+%description -l pl.UTF-8
+EZMLM-WEB to skrypt CGI pozwalajÄ…cy uÅ¼ytkownikom na Å‚atwe tworzenie,
+zarzÄ…dzanie oraz kasowanie list dyskusyjnych bez zawracania gÅ‚owy
 administratorowi systemu.
 
 %prep
